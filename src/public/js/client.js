@@ -35,7 +35,7 @@ function getScheduleDoctorByDate() {
 
                         if (index === data.message.length - 1 && schedule.isDisable === true) {
                             html += `<div>
-                                  There are no scheduled visits in the current timeframe. Please select the next scheduled exams.
+                                  Không có lịch hẹn nào trong khung thời gian hiện tại. Vui lòng chọn các ngày tiếp theo.
                             </div>`
                         }
 
@@ -43,7 +43,7 @@ function getScheduleDoctorByDate() {
                         moreInfo = `
                          <div class="d-flex flex-column">
                                     <div>
-                                                <span class="d-block mt-2">Choose <i class="fa fa-hand-o-up" aria-hidden="true"></i>  and book a free consultation</span>
+                                                <span class="d-block mt-2">Chọn <i class="fa fa-hand-o-up" aria-hidden="true"></i>  và đăng ký tư vấn miễn phí</span>
                                     </div>
                                     <div style="border-top: 1px solid #ccc"
                                          class="d-flex flex-column">
@@ -60,7 +60,7 @@ function getScheduleDoctorByDate() {
                 } else {
                     html = `
                             <div>
-                                 Doctor "${data.doctor.name}" does not have an appointment on <b>${value}</b>. Please select the next examination schedule.
+                                 Doctor "${data.doctor.name}" không có lịch trống vào<b>${value}</b>. Hãy chọn một ngày khác
                             </div>
                     `;
                     moreInfo = '';
@@ -111,7 +111,7 @@ function specializationGetScheduleDoctorByDate() {
 
                         if (index === data.message.length - 1 && schedule.isDisable === true) {
                             html += `<div>
-                                   There are no scheduled visits in the current timeframe. Please select the next scheduled exams.
+                                   Không có lịch hẹn nào trong khung thời gian hiện tại. Vui lòng chọn các ngày tiếp theo.
                             </div>`
                         }
 
@@ -120,7 +120,7 @@ function specializationGetScheduleDoctorByDate() {
                     moreInfo = `
                         <div class="d-flex flex-column">
                                             <div>
-                                                <span class="d-block mt-2"> Choose <i class="fa fa-hand-o-up" aria-hidden="true"></i>  and book a free consultation</span>
+                                                <span class="d-block mt-2"> Chọn <i class="fa fa-hand-o-up" aria-hidden="true"></i>  và đăng ký tư vấn miễn phí</span>
                                             </div>
                                             <div style="border-top: 1px solid #ccc" class="d-flex flex-column">
                                                 <span class="d-block pt-3 pb-1" style="text-transform: uppercase">Address:</span>
@@ -133,7 +133,7 @@ function specializationGetScheduleDoctorByDate() {
                     html = `
                             <div class="no-schedule">
                                
-                                 Doctor "${data.doctor.name}" does not have an appointment on <b>${value}</b>. Please select the next examination schedule.
+                                 Doctor "${data.doctor.name}" không có lịch trống vào<b>${value}</b>. Hãy chọn một ngày khác
 
                             </div>
                     `;

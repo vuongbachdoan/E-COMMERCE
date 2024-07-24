@@ -562,7 +562,7 @@ function handleBtnSchedule() {
         let time = $(`#${idBtn}`).attr("value");
         let date = $("#datepicker").val();
 
-        //check có class thì add new row, else try to remove
+        //check có class thì Thêm mới row, else try to remove
         if ($(`#${idBtn}`).hasClass("btn-css")) {
 
             let item = {
@@ -1023,7 +1023,7 @@ function handleDoctorViewInfoPatient() {
 
                         $('#imageOldForms').append(html)
                     } else {
-                        $('#imageOldForms').append(`<span>No information</span>`)
+                        $('#imageOldForms').append(`<span>Không có thông tin</span>`)
                     }
                 }
 
@@ -1176,12 +1176,12 @@ function statisticalAdmin(month) {
             $('#sumPost').text(data.posts.count);
 
             if (data.bestDoctor === '') {
-                $('#bestDoctor').text(`No information`);
+                $('#bestDoctor').text(`Không có thông tin`);
             } else {
                 $('#bestDoctor').text(`${data.bestDoctor.name} (${data.bestDoctor.count})`);
             }
             if (data.bestSupporter === '') {
-                $('#bestSupporter').text(`No information`);
+                $('#bestSupporter').text(`Không có thông tin`);
             } else {
                 $('#bestSupporter').text(`${data.bestSupporter.name} (${data.bestSupporter.count})`);
             }

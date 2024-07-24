@@ -4255,7 +4255,7 @@
 	/**
 	 * Filter the table using both the global filter and column based filtering
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {object} oSearch search information
+	 *  @param {object} oSearch Tìm kiếm thông tin
 	 *  @param {int} [iForce] force a research of the master array (1) or not (undefined or 0)
 	 *  @memberof DataTable#oApi
 	 */
@@ -6236,7 +6236,7 @@
 					.removeClass( sortClass + (i<2 ? i+1 : 3) );
 			}
 	
-			// Add new column sorting
+			// Thêm mới column sorting
 			for ( i=0, ien=sort.length ; i<ien ; i++ ) {
 				colIdx = sort[i].src;
 	
@@ -9491,7 +9491,7 @@
 	
 	/**
 	 * Template object for the way in which DataTables holds information about
-	 * search information for the global filter and individual column filters.
+	 * Tìm kiếm thông tin for the global filter and individual column filters.
 	 *  @namespace
 	 */
 	DataTable.models.oSearch = {
@@ -11747,7 +11747,7 @@
 	
 	
 			/**
-			 * Text shown inside the table records when the is no information to be
+			 * Text shown inside the table records when the is Không có thông tin to be
 			 * displayed after filtering. `emptyTable` is shown when there is simply no
 			 * information in the table at all (regardless of filtering).
 			 *  @type string
@@ -13239,7 +13239,7 @@
 		"aoFooter": [],
 	
 		/**
-		 * Store the applied global search information in case we want to force a
+		 * Store the applied global Tìm kiếm thông tin in case we want to force a
 		 * research or compare the old search to a new one.
 		 * Note that this parameter will be set by the initialisation routine. To
 		 * set a default use {@link DataTable.defaults}.

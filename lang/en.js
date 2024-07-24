@@ -6,22 +6,22 @@ export const transValidation = {
 };
 
 export const transMailBookingNew = {
-    subject: "Email notification of booking progress at Doctors Care",
+    subject: "Email notification of booking progress at Nha khoa Đông Nam",
     template: (data) => {
-        return `<h3>Thank you for booking an appointment at Doctors Care's system </h3>
+        return `<h3>Thank you for booking an appointment at Nha khoa Đông Nam's system </h3>
         <h4>Information for booked appointment:</h4>
         <div>Doctor's name: ${data.doctor} </div>
         <div>Time: ${data.time}</div>
         <div>Date: ${data.date}</div>
         <div>Status: <b> Pending - A new appointment is waiting for confirmation</b></div>
-        <h4>Doctors Care system will automatically send email notification when confirmed appointment is complete. Thank you !</h4>`;
+        <h4>Nha khoa Đông Nam system will automatically send email notification when confirmed appointment is complete. Thank you !</h4>`;
     },
 };
 
 export const transMailBookingFailed = {
-    subject: "Email notification of booking progress at Doctors Care",
+    subject: "Email notification of booking progress at Nha khoa Đông Nam",
     template: (data) => {
-        return `<h3>Thank you for booking an appointment at Doctors Care's system  </h3>
+        return `<h3>Thank you for booking an appointment at Nha khoa Đông Nam's system  </h3>
         <h4>Information for booked appointment:</h4>
         <div>Doctor's name: ${data.doctor} </div>
         <div>Time: ${data.time}</div>
@@ -32,9 +32,9 @@ export const transMailBookingFailed = {
 };
 
 export const transMailBookingSuccess = {
-    subject: "Email notification of booking progress at Doctors Care",
+    subject: "Email notification of booking progress at Nha khoa Đông Nam",
     template: (data) => {
-        return `<h3>Thank you for booking an appointment at Doctors Care's system </h3>
+        return `<h3>Thank you for booking an appointment at Nha khoa Đông Nam's system </h3>
         <h4>Information for booked appointment:</h4>
         <div>Doctor's name: ${data.doctor} </div>
         <div>Time: ${data.time}</div>

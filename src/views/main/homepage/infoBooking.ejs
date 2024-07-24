@@ -1,58 +1,36 @@
 <% extend("../app.ejs") %>
-<section class="detail-nav">
+
+<!-- Payment Section -->
+<section id="payment-section">
     <div class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <div class="menu-title text-decoration-none">
-                        <a href="/" class="text-decoration-none">
-                            <img style="object-fit: cover;" class="menu-nav" src="/images/background/smile.png" alt="img logo">
-                            <span class="text-decoration-none">Doctors care</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-8 d-flex flex-row justify-content-center align-self-center menu-type">
-                    <span class="d-block"><a href="/" class="text-decoration-none">Homepage</a></span>
-                    <span class="d-block mx-5"><a href="/for-patients" class="text-decoration-none">For patients</a></span>
-                    <span class="d-block"><a href="/for-doctors" class="text-decoration-none">For doctors</a></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <span><a href=" https://www.youtube.com/" target="_blank" class="text-decoration-none">Need support?</a></span>
-                </div>
+        <div class="row">
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                <h2>Complete Your Payment</h2>
+            </div>
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <!-- Google Pay Button -->
+                <div id="google-pay-button-container"></div>
             </div>
         </div>
     </div>
 </section>
-<section class="detail-info-specialization">
-    <div class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 mt-3">
-                    <a class="text-decoration-none" href="/">Homepage </a><span aria-hidden="true">&raquo;</span>
-                    <span style="text-transform: uppercase">
-                   Scheduling information
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="detail-info-booking mt-3">
+
+<!-- Success Section -->
+<section id="success-section" style="display: none;">
     <div class="container">
         <div class="container">
             <div class="row">
                 <div class="col-8 mx-auto">
-                    <h2>Successful appointment scheduling!</h2>
+                    <h2>Đặt lịch thành công!</h2>
                     <hr>
                     <div class="booking-success row">
-                        <div class="right-booking col-3 d-flex flex-column ">
-                                <img style="object-fit: cover;" src="/images/users/<%= patient.getDataValue('doctorAvatar')%>">
-                                <div class="mt-2"><%= patient.getDataValue('doctorName')%></div>
+                        <div class="right-booking col-3 d-flex flex-column">
+                            <img style="object-fit: cover;" src="/images/users/<%= patient.getDataValue('doctorAvatar') %>">
+                            <div class="mt-2"><%= patient.getDataValue('doctorName') %></div>
                         </div>
                         <div class="left-booking col-9 mt-3">
-                            <div> Thank you for booking a visit from DoctorCare. The system has recorded an appointment.
-                                The support staff will call for confirmation within 24 hours after booking.</div>
-                            <div class="mt-2">Need support please contact hotline: 911 911 </div>
+                            <div> Cảm ơn bạn đã đăng ký. Nhân viên bệnh viện sẽ gọi để xác nhận trong vòng 24h tới.</div>
+                            <div class="mt-2">Đường dây nóng hỗ trợ: 911 911 </div>
                         </div>
                     </div>
                 </div>
@@ -60,3 +38,68 @@
         </div>
     </div>
 </section>
+
+<!-- Include Google Pay JavaScript library -->
+<script src="https://pay.google.com/gp/p/js/pay.js"></script>
+<script>
+    // Initialize the Google Pay client
+    const paymentsClient = new google.payments.api.PaymentsClient({ environment: 'TEST' });
+
+    const paymentDataRequest = {
+        apiVersion: 2,
+        apiVersionMinor: 0,
+        allowedPaymentMethods: [{
+            type: 'CARD',
+            parameters: {
+                allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                allowedCardNetworks: ['MASTERCARD', 'VISA'],
+            },
+            tokenizationSpecification: {
+                type: 'PAYMENT_GATEWAY',
+                parameters: {
+                    gateway: 'example',
+                    gatewayMerchantId: 'exampleGatewayMerchantId',
+                },
+            },
+        }],
+        merchantInfo: {
+            merchantId: 'exampleMerchantId',
+            merchantName: 'Example Merchant',
+        },
+        transactionInfo: {
+            totalPriceStatus: 'FINAL',
+            totalPrice: '50.00',
+            currencyCode: 'USD',
+        },
+    };
+
+    // Create the Google Pay button
+    function createGooglePayButton() {
+        const button = paymentsClient.createButton({
+            onClick: onGooglePayButtonClicked,
+        });
+        document.getElementById('google-pay-button-container').appendChild(button);
+    }
+
+    // Handle the Google Pay button click event
+    function onGooglePayButtonClicked() {
+        paymentsClient.loadPaymentData(paymentDataRequest)
+            .then(function(paymentData) {
+                // Handle the response from Google Pay
+                console.log('Payment data received:', paymentData);
+                
+                // Show the success page
+                document.getElementById('payment-section').style.display = 'none';
+                document.getElementById('success-section').style.display = 'block';
+            })
+            .catch(function(err) {
+                console.error('Error:', err);
+                alert('Payment failed. Please try again.');
+            });
+    }
+
+    // Create the Google Pay button when the page loads
+    window.onload = function() {
+        createGooglePayButton();
+    };
+</script>

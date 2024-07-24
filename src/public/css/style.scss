@@ -109,14 +109,14 @@ body {
     height: 500px;
 
     .img-header {
-        height: 400px;
+        height: 800px;
         background-color: #fff;
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: url("../images/header-cover.jpg");
+        background-image: url("../images/background/header-cover.jpg");
 
         .header-search {
-            background-color: #f7d800;
+            background-color: #02628C;
             border-radius: 20px;
             text-align: center;
             width: 500px;
@@ -125,7 +125,7 @@ body {
             input {
                 border: transparent;
                 width: 90%;
-                background: #f7d800;
+                background: #02628C;
                 margin-top: 7px;
 
                 &:focus {
@@ -172,7 +172,7 @@ body {
             border-radius: 2px;
             height: 35px;
             padding: 5px 10px 0 10px;
-            background-color: #e2e0e0;
+            background-color: #3cbec9;
 
             &:hover {
                 background-color: #ccc;
@@ -195,7 +195,7 @@ body {
             color: #111;
             font-weight: bold;
             padding: 10px;
-            background-color: #e2e0e0;
+            background-color: #3cbec9;
         }
 
         img {
@@ -232,7 +232,7 @@ body {
             border-radius: 2px;
 
             &:hover {
-                background-color: #e2e0e0;
+                background-color: #3cbec9;
             }
 
             img {
